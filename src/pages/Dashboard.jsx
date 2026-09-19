@@ -132,6 +132,10 @@ export function Dashboard({ useTasksHook, searchQuery, showAddModal, setShowAddM
         <div className="dashboard-main">
           <div className="dashboard-header">
             <div className="mission-header">
+              <div className="mission-badge">
+                <Icon name="spark" size={12} />
+                <span>Daily Mission</span>
+              </div>
               <h2>Today's Mission</h2>
               <p>Stay focused. Complete what matters.</p>
             </div>
@@ -143,7 +147,7 @@ export function Dashboard({ useTasksHook, searchQuery, showAddModal, setShowAddM
               }}
             >
               <Icon name="plus" size={16} />
-              Add Task
+              Launch Task
             </button>
           </div>
 
@@ -177,6 +181,8 @@ export function Dashboard({ useTasksHook, searchQuery, showAddModal, setShowAddM
               onDragOver={handleDragOver}
               onDrop={handleDrop}
               draggedTask={draggedTask}
+              filterType={currentFilter}
+              searchQuery={searchQuery}
             />
           </div>
         </div>

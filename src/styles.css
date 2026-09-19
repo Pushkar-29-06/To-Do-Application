@@ -309,6 +309,15 @@
   color: var(--ink)
 }
 
+.dark-mode .empty-icon {
+  background: #152018
+}
+
+.dark-mode .mission-badge {
+  background: linear-gradient(135deg, #3a9d85 0%, #2a7a65 100%);
+  color: #e8e8e8
+}
+
 .dark-mode .daily-goal-section {
   border-top-color: var(--line)
 }
@@ -1835,16 +1844,46 @@ footer .brand-mark {
 
   .header-actions {
     width: 100%;
-    justify-content: space-between
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px
   }
 
   .search-bar {
     flex: 1;
-    max-width: none
+    max-width: none;
+    order: 1
+  }
+
+  .header-actions .icon-button {
+    order: 2
+  }
+
+  .header-avatar {
+    order: 3
   }
 
   .page-content {
     padding: 20px
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr
+  }
+
+  .dashboard-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px
+  }
+
+  .mission-header h2 {
+    font-size: 26px
+  }
+
+  .add-task-button {
+    justify-content: center;
+    width: 100%
   }
 
   .progress-stats {
@@ -1869,20 +1908,8 @@ footer .brand-mark {
 
   .modal {
     margin: 20px;
-    max-height: calc(100vh - 40px)
-  }
-
-  .dashboard-header {
-    flex-direction: column;
-    align-items: stretch
-  }
-
-  .add-task-button {
-    justify-content: center
-  }
-
-  .progress-stats {
-    grid-template-columns: 1fr
+    max-height: calc(100vh - 40px);
+    border-radius: 12px
   }
 
   .task-actions {
@@ -1896,6 +1923,23 @@ footer .brand-mark {
   .task-content {
     flex: 1;
     min-width: 0
+  }
+
+  .empty-state {
+    padding: 60px 16px
+  }
+
+  .empty-icon {
+    width: 64px;
+    height: 64px
+  }
+
+  .empty-state p {
+    font-size: 16px
+  }
+
+  .empty-state span {
+    font-size: 13px
   }
 }
 
@@ -2409,16 +2453,33 @@ footer .brand-mark {
 }
 
 .mission-header h2 {
-  font-size: 28px;
-  letter-spacing: -1px;
-  margin: 0 0 6px;
-  font-weight: 700
+  font-size: 32px;
+  letter-spacing: -1.2px;
+  margin: 0 0 8px;
+  font-weight: 700;
+  line-height: 1.2
 }
 
 .mission-header p {
-  font-size: 14px;
+  font-size: 15px;
   color: var(--muted);
-  margin: 0
+  margin: 0;
+  line-height: 1.5
+}
+
+.mission-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, var(--mint) 0%, var(--mint-deep) 100%);
+  color: #0a3d32;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  margin-bottom: 12px
 }
 
 .add-task-button {
@@ -2447,10 +2508,10 @@ footer .brand-mark {
    ======================================== */
 
 .progress-card {
-  background: #f4fbf8;
+  background: white;
   border: 1px solid var(--line);
-  border-radius: 14px;
-  padding: 20px
+  border-radius: 16px;
+  padding: 24px
 }
 
 .progress-header {
@@ -2654,8 +2715,8 @@ footer .brand-mark {
 .tasks-section {
   background: white;
   border: 1px solid var(--line);
-  border-radius: 14px;
-  padding: 20px
+  border-radius: 16px;
+  padding: 24px
 }
 
 .tasks-header {
@@ -2717,25 +2778,37 @@ footer .brand-mark {
 
 .empty-state {
   text-align: center;
-  padding: 48px 24px;
+  padding: 80px 24px;
   color: var(--muted)
 }
 
+.empty-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #f4fbf8;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 20px;
+  color: var(--mint-deep)
+}
+
 .empty-state svg {
-  color: var(--mint);
-  margin-bottom: 16px;
-  opacity: 0.5
+  color: var(--mint-deep);
+  opacity: 0.6
 }
 
 .empty-state p {
-  font-size: 14px;
-  font-weight: 500;
-  margin: 0 0 4px;
-  color: var(--ink)
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 8px;
+  color: var(--ink);
+  letter-spacing: -0.3px
 }
 
 .empty-state span {
-  font-size: 12px
+  font-size: 14px;
+  line-height: 1.5
 }
 
 /* ========================================
@@ -2746,16 +2819,19 @@ footer .brand-mark {
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  padding: 12px;
+  padding: 16px;
   background: white;
   border: 1px solid var(--line);
-  border-radius: 10px;
-  transition: all 0.2s
+  border-radius: 12px;
+  margin-bottom: 12px;
+  transition: all 0.2s ease;
+  cursor: default
 }
 
 .task-item:hover {
-  border-color: #c8e5da;
-  box-shadow: 0 2px 8px rgba(33, 93, 78, 0.05)
+  border-color: #b8d4cc;
+  box-shadow: 0 2px 8px rgba(32, 92, 77, .06);
+  transform: translateY(-1px)
 }
 
 .task-item.completed {
@@ -2773,8 +2849,8 @@ footer .brand-mark {
 }
 
 .task-checkbox {
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   border: 2px solid #c4d5cf;
   border-radius: 50%;
   background: white;
@@ -2782,11 +2858,15 @@ footer .brand-mark {
   display: grid;
   place-items: center;
   flex-shrink: 0;
-  transition: all 0.2s;
-  color: white
+  transition: all 0.2s ease
 }
 
 .task-checkbox:hover {
+  border-color: var(--mint);
+  transform: scale(1.05)
+}
+
+.task-item:hover .task-checkbox {
   border-color: var(--mint)
 }
 
@@ -2893,34 +2973,34 @@ footer .brand-mark {
   display: flex;
   gap: 4px;
   opacity: 0;
-  transition: opacity 0.2s
+  transition: opacity 0.2s ease
 }
 
 .task-item:hover .task-actions {
   opacity: 1
 }
 
-.action-button {
-  background: none;
+.icon-button {
+  width: 36px;
+  height: 36px;
   border: none;
-  color: var(--muted);
+  background: transparent;
+  border-radius: 8px;
   cursor: pointer;
-  padding: 6px;
-  border-radius: 6px;
-  transition: all 0.2s;
-  display: flex;
-  align-items: center;
-  justify-content: center
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+  transition: all 0.2s ease
 }
 
-.action-button:hover {
+.icon-button:hover {
   background: #f4fbf8;
-  color: var(--mint-deep)
+  color: var(--mint-deep);
+  transform: scale(1.05)
 }
 
-.action-button.delete:hover {
-  background: #fcecf2;
-  color: #c45e88
+.icon-button:active {
+  transform: scale(0.95)
 }
 
 /* ========================================
@@ -2936,8 +3016,8 @@ footer .brand-mark {
 .projects-section {
   background: white;
   border: 1px solid var(--line);
-  border-radius: 14px;
-  padding: 20px
+  border-radius: 16px;
+  padding: 24px
 }
 
 .section-header {
@@ -3097,31 +3177,53 @@ footer .brand-mark {
 
 .modal-overlay {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background: rgba(21, 37, 34, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  place-items: center;
   z-index: 1000;
-  padding: 20px
+  padding: 20px;
+  animation: fadeIn 0.2s ease
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0
+  }
+  to {
+    opacity: 1
+  }
 }
 
 .modal {
   background: white;
   border-radius: 16px;
-  width: 100%;
+  padding: 24px;
   max-width: 480px;
-  max-height: 90vh;
-  overflow-y: auto;
-  box-shadow: 0 24px 60px rgba(32, 92, 77, 0.2)
+  width: 100%;
+  box-shadow: 0 24px 60px rgba(32, 92, 77, .15);
+  animation: slideUp 0.3s ease
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px)
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0)
+  }
 }
 
 .modal-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 24px;
-  border-bottom: 1px solid var(--line)
+  margin-bottom: 20px
 }
 
 .modal-header h2 {

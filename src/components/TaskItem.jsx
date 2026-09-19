@@ -36,7 +36,7 @@ export function TaskItem({ task, project, priority, onToggle, onEdit, onDelete, 
       onDrop={(e) => onDrop(e, task)}
     >
       <button 
-        className="task-checkbox"
+        className={`task-checkbox ${task.completed ? 'done' : ''}`}
         onClick={() => onToggle(task.id)}
         aria-label={task.completed ? 'Mark as incomplete' : 'Mark as complete'}
       >
