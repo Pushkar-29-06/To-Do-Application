@@ -139,7 +139,7 @@ export function Dashboard({ useTasksHook, searchQuery, showAddModal, setShowAddM
               className="add-task-button"
               onClick={() => {
                 setEditingTask(null);
-                setIsAddModalOpen(true);
+                setShowAddModal(true);
               }}
             >
               <Icon name="plus" size={16} />
